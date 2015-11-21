@@ -1,0 +1,9 @@
+---
+# Variables listed here are applicable to all host groups
+
+app_dir: /apps/relax
+app_repo: https://github.com/relax/relax.git
+npm_registry: https://registry.npm.taobao.org
+test_data_url: http://ci:9000/relax_test_data.tar.gz
+temp_dir: /tmp
+

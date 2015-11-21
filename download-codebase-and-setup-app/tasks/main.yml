@@ -1,0 +1,13 @@
+---
+- name: create app directory and set correct permissions
+  file: path={{ app_dir }} state=directory owner={{ ansible_ssh_user }} mode=755
+  sudo: yes
+
+- name: Clone relax codebase
+  git: repo={{ app_repo }} dest={{ app_dir }}
+
+- name: Run npm install
+  npm: path={{ app_dir }} registry={{ npm_registry }}
+
+- name: npm run build
+  command: npm run build chdir={{ app_dir }}

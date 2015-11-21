@@ -1,0 +1,11 @@
+---
+ - hosts: all
+   roles:
+     - install-common-dependencies
+     - setup-nodejs
+     - setup-mongodb
+     - setup-sharp
+     - download-codebase-and-setup-app
+     - import-test-data
+     # - setup-nginx
+

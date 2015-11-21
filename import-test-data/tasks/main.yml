@@ -1,0 +1,15 @@
+---
+ - name: Get latest test data for development environment
+   get_url: url={{ test_data_url }} dest={{ temp_dir }}/test_data.tar.gz
+
+ - name: ensure temporary dump directory is clean
+   file: path={{ temp_dir}}/dump state=absent
+
+ - name: create temporary dump directory
+   file: path={{ temp_dir }}/dump state=directory
+
+ - name: Unzip test data
+   unarchive: src={{ temp_dir }}/test_data.tar.gz dest={{ temp_dir }} copy=no
+
+ - name: Restore the data to mongodb
+   shell: mongorestore {{ temp_dir }}/dump

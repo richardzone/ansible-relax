@@ -1,0 +1,8 @@
+---
+- name: Install Git package
+  apt: name={{ item }} state=present update_cache=true
+  sudo: yes
+  with_items:
+   - git
+   - build-essential
+   - pkg-config

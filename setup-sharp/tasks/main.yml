@@ -1,0 +1,11 @@
+---
+- name: Add libvips apt repo
+  apt_repository: repo='ppa:lovell/trusty-backport-vips' state=present
+  sudo: yes
+
+- name: Install libvips
+  apt: name={{ item }} state=present
+  sudo: yes
+  with_items:
+    - libvips-dev
+    - libgsf-1-dev

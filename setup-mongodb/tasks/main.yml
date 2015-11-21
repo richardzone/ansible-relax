@@ -1,0 +1,17 @@
+---
+- name: Import Mongodb public key
+  apt_key: keyserver=keyserver.ubuntu.com id=7F0CEB10
+  sudo: yes
+
+- name: Add Mongodb source to source list 
+  shell: >
+    echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.0 multiverse" \
+    | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+
+- name: Install Mongodb stable version
+  apt: name=mongodb-org state=present update_cache=yes
+  sudo: yes
+
+- name: Start Mongodb service
+  service: name=mongod state=started
+  sudo: yes
